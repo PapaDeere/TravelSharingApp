@@ -28,19 +28,20 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
+app.use(express.static("client/build"));
 
 // routes ======================================================================
-
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 require('./config/passport')(passport); // pass passport for configuration
 // Serve up static assets
-app.use(express.static("client/build"));
 // Add routes, both API and view
 app.use(routes);
 
 // Connect to the Mongo DB
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/travelApp");
-mongoose.connect(configDB.url); // connect to our database
+mongoose.Promise = Promise;
+mongoose.connect(process.env.MONGODB_URI || configDB.url);
+// mongoose.connect(configDB.url); // connect to our database
 
 // Start the API server
 app.listen(PORT);
