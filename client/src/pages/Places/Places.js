@@ -10,12 +10,13 @@ import { Input, TextArea, FormBtn } from "../../components/Form";
 class Places extends Component {
   state = {
     places: [],
-    location: "",
-    hotel: "",
-    hotelPrice: "",
-    attraction: "",
-    attractionPrice: "",
-    comments: ""
+    deal_type: "",
+    deal_city: "",
+    deal_state: "",
+    deal_locationName: "",
+    deal_price: "",
+    deal_url: "",
+    deal_comments: ""
   };
 
   componentDidMount() {
@@ -25,7 +26,7 @@ class Places extends Component {
   loadPlaces = () => {
     API.getPlaces()
       .then(res =>
-        this.setState({ places: res.data, location: "", hotel: "", hotelPrice: "", attraction: "", attractionPrice: "", comments: "" })
+        this.setState({ places: res.data, deal_type: "", deal_city: "", deal_state: "", deal_locationName: "", deal_price: "", deal_url: "", deal_comments: "" })
       )
       .catch(err => console.log(err));
   };
@@ -45,14 +46,15 @@ class Places extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.location && this.state.hotel && this.state.hotelPrice && this.state.attraction && this.state.attractionPrice && this.state.comments) {
+    if (this.state.deal_type && this.state.deal_city && this.state.deal_state && this.state.deal_locationName && this.state.deal_price && this.state.deal_url && this.state.deal_comments) {
       API.savePlace({
-        location: this.state.location,
-        hotel: this.state.hotel,
-        hotelPrice: this.state.hotelPrice,
-        attraction: this.state.attraction,
-        attractionPrice: this.state.attractionPrice,
-        comments: this.state.comments
+        deal_type: this.state.deal_type,
+        deal_city: this.state.deal_city,
+        deal_state: this.state.deal_state,
+        deal_locationName: this.state.deal_locationName,
+        deal_price: this.state.deal_price,
+        deal_url: this.state.deal_url,
+        deal_comments: this.state.deal_comments
       })
         .then(res => this.loadPlaces())
         .catch(err => console.log(err));
@@ -69,43 +71,49 @@ class Places extends Component {
             </Jumbotron>
             <form>
               <Input
-                value={this.state.location}
+                value={this.state.deal_type}
                 onChange={this.handleInputChange}
-                name="location"
-                placeholder="Location (required)"
+                name="deal_type"
+                placeholder="Type of deal (required)"
               />
               <Input
-                value={this.state.hotel}
+                value={this.state.deal_city}
                 onChange={this.handleInputChange}
-                name="hotel"
-                placeholder="hotel (Optional)"
+                name="deal_city"
+                placeholder="City (required)"
               />
               <Input
-                value={this.state.hotelPrice}
+                value={this.state.deal_state}
                 onChange={this.handleInputChange}
-                name="hotelPrice"
-                placeholder="Hotel price (Optional)"
+                name="deal_state"
+                placeholder="State (required)"
               />
               <Input
-                value={this.state.attraction}
+                value={this.state.deal_locationName}
                 onChange={this.handleInputChange}
-                name="attraction"
-                placeholder="Attraction (Optional)"
+                name="deal_locationName"
+                placeholder="Location Name (required)"
               />
               <Input
-                value={this.state.attractionPrice}
+                value={this.state.deal_price}
                 onChange={this.handleInputChange}
-                name="attractionPrice"
-                placeholder="Attraction Price (Optional)"
+                name="deal_price"
+                placeholder="Price (optional)"
+              />
+              <Input
+                value={this.state.deal_url}
+                onChange={this.handleInputChange}
+                name="deal_url"
+                placeholder="URL to deal (optional)"
               />
               <TextArea
-                value={this.state.comments}
+                value={this.state.deal_comments}
                 onChange={this.handleInputChange}
-                name="comments"
-                placeholder="Comments (Optional)"
+                name="deal_comments"
+                placeholder="Comments (optional)"
               />
               <FormBtn
-                disabled={!(this.state.location)}
+                disabled={!(this.state.deal_type)}
                 onClick={this.handleFormSubmit}
               >
                 Submit Place
@@ -122,7 +130,7 @@ class Places extends Component {
                   <ListItem key={place._id}>
                     <Link to={"/places/" + place._id}>
                       <strong>
-                        {place.location}
+                        {place.deal_type}
                       </strong>
                     </Link>
                     <DeleteBtn onClick={() => this.deletePlace(place._id)} />

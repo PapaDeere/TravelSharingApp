@@ -2,12 +2,13 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const placeSchema = new Schema({
-  location: { type: String, required: true },
-  hotel: { type: String, required: false },
-  hotelPrice: { type: Number, required: false},
-  attraction: { type: String, required: false },
-  attractionPrice: { type: Number, required: false},  
-  comment: String,
+  deal_type: { type: String, required: true },
+  deal_city: { type: String, required: true },
+  deal_state: { type: String, required: true },
+  deal_locationName: { type: String, required: true },
+  deal_price: { type: Number, required: false},
+  deal_url: { type: String, required: false },
+  deal_comments: String,
   date: { type: Date, default: Date.now }
 });
 

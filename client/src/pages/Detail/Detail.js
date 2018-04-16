@@ -23,11 +23,12 @@ class Detail extends Component {
           <Col size="md-12">
             <Jumbotron>
               <h2>
-                <li>{this.state.place.location}</li>
-                <li>{this.state.place.hotel}</li>
-                <li>{this.state.place.hotelPrice}</li>
-                <li>{this.state.place.attraction}</li>
-                <li>{this.state.place.attractionPrice}</li>
+                <li>{this.state.place.deal_type}</li>
+                <li>{this.state.place.deal_city}</li>
+                <li>{this.state.place.deal_state}</li>
+                <li>{this.state.place.deal_locationName}</li>
+                <li>{this.state.place.deal_price}</li>
+                <li>{this.state.place.deal_url}</li>
 
               </h2>
             </Jumbotron>
@@ -38,7 +39,7 @@ class Detail extends Component {
             <article>
               <h1>Comments</h1>
               <p>
-                {this.state.place.comment}
+                {this.state.place.deal_comments}
               </p>
             </article>
           </Col>
