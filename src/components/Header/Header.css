@@ -1,0 +1,44 @@
+/* Header */
+.header {
+    background-image: url(https://www.static.frontsigns.com/uploads/2018/02/sale-storefront-signs.jpg);
+    padding: 100px 0;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+.section {
+    position: relative;
+}
+
+.header-inner {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.section-inner {
+    width: 1040px;
+    max-width: 86%;
+    margin: 0 auto;
+}
+
+.title-info {
+    display: inline-block;
+    padding: 30px;
+    background: #1d1d1d;
+}
+
+.title-title {
+    width: 100%;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.title-description {
+    color: rgba(255,255,255,0.5);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.25;
+    text-align: center;
+}
